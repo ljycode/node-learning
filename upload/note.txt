@@ -1,0 +1,30 @@
+ajax 异步javascript和xml
+1 ajax不是一门新的编程语言 
+2 ajax对智能手机支持比较好 
+===================================
+  // Ajax
+// 1 创建一个xhr对象
+var xhr = new XMLHttpRequest();
+ // 2 指定接受回来的内容 就绪状态改变时候触发
+xhr.onreadystatechange = function() {
+    if(xhr.readyState == 4) {
+        // 接收完文件 
+        content.innerHTML = xhr.responseText;
+    }
+}
+// 3 创建一个请求 配置 第一个参数 请求类型 get/post 第二个参数 请求路径 第三个参数 是否使用异步
+    xhr.open("get","php/1.txt",true);
+    // 4 发送请求
+    xhr.send(null);
+
+**** xhr对象
+   高级浏览器 new XMLHttpRequest()
+   IE6  new ActiveXOject("Microsoft.XMLHTTP");
+*** open()
+
+*** 异步 
+    setInterval() setTimeout() 
+    所有的事件监听都看作异步
+    ajax 
+
+

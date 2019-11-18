@@ -1,0 +1,108 @@
+API
+请求对象 request
+          url
+          method
+响应对象 response
+          write()
+          end()
+服务器做那些事
+1. 响应请求
+2. 数据交互
+
+nodejs核心模块
+1. http创建服务器
+2. fs模块 filesystem
+
+====================================
+
+模块系统
+核心模块 nodejs内置模块
+文件模块 自定义模块 一个js文件就是一个模块
+第三方模块 (npmjs.com)
+
+模块之间通信
+  模块导入：
+    核心模块：require("url")
+    自定义模块： require("./a.js") require("./a")  一般用相对路径
+    第三方模块： require("koa")  // npm安装后直接引用
+  模块导出：
+
+
+模块加载顺序：
+
+require 
+  1 加载模块，加载谁就执行谁
+  2 得到模块导出的成员
+
+
+// require 1 加载模块 加载谁就执行谁  2 得到模块导出的成员
+//const http = require("http"); // 核心模块
+//const fn = require("./my.js"); // 自定义模块 一般书写成相对路径
+//const koa = require("koa"); // 第三方模块
+const m2 = require("../module2");
+//fn();
+
+console.log(module.paths);
+
+
+/*
+  
+    适用node9.X以下
+    
+                          Y 
+   查找文件->判断路径是否为相对路径----确定是文件模块-------   
+            y     | N                               |
+加载核心模块<--是否为核心模块                            | 
+                  | N                               |
+             确定是第三方模块                          |
+                  |                                 |
+           按照module.paths指定的路径查找文件           |
+                  |                                 |
+        -->尝试按照包(带有package.json)开始查找<--------
+        |           |                          Y
+        |  对应目录是否有package.json以及main指向--->加载main指向的文件
+        |           | N
+        |  尝试添加扩展名 按文件进行查找
+        |           |                       Y
+        |  是否有对应的扩展名js、json、node文件--->加载对应文件
+        |           | N                                           Y          
+        |   尝试查找该目录下index文件(index.js index.json index.node)--->加载对应文件
+        |           | N     Y
+        |  是否文件模块----------报错
+        |           | N         N   
+        --是否有上一级module.path-->报错
+                                                     
+
+*/             
+
+
+Ajax
+
+B/S
+客户端(浏览器)          服务器 (apache/tomcat)
+                              php java需要装服务器，node的话不需要安装
+
+                              linux(运维)
+
+IP地址、域名、端口、协议
+
+
+
+C/S
+客户端(本地安装的软件、app)          服务器
+
+cookie/session
+
+cookie存储在客户端，不安全
+
+设置带签名的cookie
+
+            值+符号+生成的密钥
+psw 123456  123456.*******
+
+session 存储在服务器上，安全性高，基于cookie
+
+postman 测试接口的工具
+
+中间件 带有req,res的函数
+

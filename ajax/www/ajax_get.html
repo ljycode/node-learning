@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">原生ajax---get请求</button>
+  <div id="return">这里是返回的值</div>
+  <script>
+      var btn = document.getElementById("btn");
+      btn.onclick = function() {
+        // 1.创建XMLHttpRequest
+        var xhr;
+        if (XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+        } else { // 兼容低版本浏览器
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        // 2.准备发送：请求方式，路径，异步(true)/同步(false)
+        xhr.open("get", "/get?name=zs", true); 
+        // 3.执行发送
+        xhr.send();
+        // 4.指定回调函数,当状态发生变化时执行
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) { // 状态
+            if ( xhr.status == 200) {  // 响应的状态码
+              var data = xhr.responseText; // 获取数据
+              document.getElementById("return").innerHTML = data;
+            }
+          }
+        }
+      }
+      /*
+        xhr.readyState的值：
+        0：open()方法没有被调用
+        1：open()方法被调用
+        2: 请求已接收 接收到了响应头
+        3: 请求处理中 正在下载响应体
+        4：请求已完成
+      */
+  </script>
+</body>
+</html>

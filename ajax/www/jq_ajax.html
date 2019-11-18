@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">发送请求</button>
+  <div></div>
+  <script src="./jquery.min.js"></script>
+  <script>
+    $("#btn").click(function() {
+      // 解决ajax缓存的问题：加随机数、时间戳：new Data.now()
+      $.get("/get", {"name":"zs", "age":18, a:Math.random()}, function(data) {
+        console.log(data);
+      });
+      /*
+      $.post("/get", {name:zs, age:18}, function(data) {
+        console.log(data);
+      });
+      */
+      /*
+      $.ajax(url, {
+        type: "get",
+        data: {
+          "name": "zs",
+          "age": 18,
+        },
+        success: function() {
+
+        },
+        error: function() {
+
+        }
+      })
+      */
+    });
+  </script>
+</body>
+</html>
